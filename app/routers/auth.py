@@ -27,7 +27,7 @@ def autenticar_usuario(email,senha,session):
 
 @auth_roteador.post("/criar_conta")
 async def criar_conta(usuario_schema: UsuarioSchema,background_tasks:BackgroundTasks, session: session = Depends(pegar_sessao)):
-    usuario = session.query(Usuario).filter(Usuario.email == usuario_schema.email).first()
+    usuario = session.query(Instituicao).filter(Instituicao.email == usuario_schema.email).first()
 
     if usuario:
         raise HTTPException(status_code=400,detail="este email já está cadastrado")
