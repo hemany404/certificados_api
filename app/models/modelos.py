@@ -12,8 +12,14 @@ class Instituicao(Base):
     nome = Column(String, nullable=False)
     email = Column(String, unique=True)
     senha = Column(String, nullable=False)
-    logo_url = Column(String)
+    logo_url = Column(String,nullable=True)
     criado_em = Column(DateTime, default=datetime.now(timezone.utc))
+    
+    def __init__(self,nome,email,senha,logo_url):
+        self.nome = nome
+        self.email = email
+        self.senha = senha
+        self.logo_url =logo_url
 
 
 class Certificado(Base):
@@ -34,3 +40,4 @@ class Certificado(Base):
     instituicao = relationship("Instituicao")
 
     criado_em = Column(DateTime, default=datetime.now(timezone.utc))
+    

@@ -1,7 +1,7 @@
 from fastapi import Depends,HTTPException
 from sqlalchemy.orm import  session
 from app.models.modelos import Instituicao
-from app.main import ALGORITHM,SECRETY_KEY,oauth2_schema
+from main import ALGORITHM,SECRETY_KEY,oauth2_schema
 from jose import jwt,JWTError
 from app.core.database import pegar_db
 

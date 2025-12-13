@@ -1,10 +1,12 @@
 from pydantic import BaseModel
+from typing import Optional
 
 
 class InstituicaoSchema(BaseModel):
     nome : str
     email : str
     senha : str
+    logo_url : Optional[str] 
 
 
     class config:

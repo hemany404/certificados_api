@@ -5,7 +5,7 @@ from app.dependecias import verificar_usuario
 from jose import jwt,JWTError
 from app.core.database import pegar_db
 from app.schemas.schema import InstituicaoSchema,LoginSchema
-from app.main import bcrypt_context,SECRETY_KEY,ALGORITHM,ACESS_TOKEN_MINUTO_EXPIRACAO
+from main import bcrypt_context,SECRETY_KEY,ALGORITHM,ACESS_TOKEN_MINUTO_EXPIRACAO
 from datetime import datetime,timedelta,timezone
 from fastapi.security import OAuth2PasswordRequestForm
 
@@ -34,11 +34,11 @@ async def criar_conta(instituicao_schema: InstituicaoSchema, session: session = 
         raise HTTPException(status_code=400,detail="este email já está cadastrado")
     else:
         senha_criptografada = bcrypt_context.hash(instituicao_schema.senha)
-        nova_instituicao = Instituicao(instituicao_schema.nome,instituicao_schema.email,senha_criptografada)
+        nova_instituicao = Instituicao(instituicao_schema.nome,instituicao_schema.email,senha_criptografada,instituicao_schema.logo_url)
         session.add(nova_instituicao)
         session.commit()
         return{
-            "mensagem":"instituição cadastrado com sucesso"
+            "mensagem":"instituição cadastrada com sucesso"
         }
     
 @auth_roteador.post("/login")   
