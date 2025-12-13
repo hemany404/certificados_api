@@ -1,7 +1,9 @@
 from sqlalchemy import Integer,Column,String,Date,ForeignKey,DateTime
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship,declarative_base
 from datetime import datetime,timedelta,timezone
-from core.database import Base
+
+
+Base = declarative_base()
 
 class Instituicao(Base):
     __tablename__ = "instituicoes"
