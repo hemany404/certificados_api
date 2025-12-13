@@ -26,7 +26,7 @@ class Certificado(Base):
     __tablename__ = "certificados"
 
     id = Column(Integer, primary_key=True)
-    aluno = Column(String, nullable=False)
+    nome_aluno = Column(String, nullable=False)
     curso = Column(String, nullable=False)
     carga_horaria = Column(Integer, nullable=False)
 
@@ -41,3 +41,10 @@ class Certificado(Base):
 
     criado_em = Column(DateTime, default=datetime.now(timezone.utc))
     
+
+    def __init__(self,nome_aluno,curso,carga_horaria,data_emissao,instituicao_id):
+        self.nome_aluno = nome_aluno
+        self.curso = curso
+        self.carga_horaria = carga_horaria
+        self.data_emissao = data_emissao
+        self.instituicao_id =instituicao_id
