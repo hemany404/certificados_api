@@ -16,8 +16,10 @@ bcrypt_context = CryptContext(schemes=["bcrypt"],deprecated= "auto")
 oauth2_schema = OAuth2PasswordBearer(tokenUrl="auth/login-form")
 
 from app.routers.auth import auth_roteador
+from app.routers.certificados import certificado_roteador
 
 
 app.include_router(auth_roteador)
+app.include_router(certificado_roteador)
 
 

@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from typing import Optional
+from datetime import date
 
 
 class InstituicaoSchema(BaseModel):
@@ -15,7 +16,8 @@ class InstituicaoSchema(BaseModel):
 class CertificadoSchema(BaseModel):
     aluno: str
     curso:str
-    nota_final:int
+    carga_horaria:int
+    data_emissao: date
     instituicao_id:int
 
     class config:
