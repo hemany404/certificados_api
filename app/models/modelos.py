@@ -42,9 +42,11 @@ class Certificado(Base):
     criado_em = Column(DateTime, default=datetime.now(timezone.utc))
     
 
-    def __init__(self,nome_aluno,curso,carga_horaria,data_emissao,instituicao_id):
+    def __init__(self,nome_aluno,curso,carga_horaria,data_emissao,instituicao_id,hash):
         self.nome_aluno = nome_aluno
         self.curso = curso
         self.carga_horaria = carga_horaria
         self.data_emissao = data_emissao
         self.instituicao_id =instituicao_id
+        self.hash =hash
+        

@@ -1,7 +1,13 @@
-from hashlib import sha256
-def gerar_hash(nome_aluno,curso,instituicao,carga_horaria):
-    itens =[b"nome_aluno",b"curso",b"instituicao",b"carga_horaria"]
-    hash = sha256()
-    for item in itens:
-        hash.update(item)
-    hash.hexdigest()  
+import hashlib 
+import os
+from datetime import datetime,timezone
+import secrets
+
+def gerar_hash(seed: dict) -> dict:
+    # Combina seed + aleatório para evitar colisões
+    s = f"{seed}|{datetime.now(timezone.utc).isoformat()}|{secrets.token_hex(8)}"
+    return hashlib.sha256(s.encode("utf-8")).hexdigest()[:32]  
+
+def directorio(path:str):
+    os.makedirs(path,exist_ok=True)
+    return path

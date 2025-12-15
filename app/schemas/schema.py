@@ -7,14 +7,14 @@ class InstituicaoSchema(BaseModel):
     nome : str
     email : str
     senha : str
-    logo_url : Optional[str] 
+    logo_url : Optional[str] =None
 
 
     class config:
         from_attributes = True
 
 class CertificadoSchema(BaseModel):
-    aluno: str
+    nome_aluno: str
     curso:str
     carga_horaria:int
     data_emissao: date
@@ -29,6 +29,26 @@ class LoginSchema(BaseModel):
     senha: str
 
     class config:
-        from_attributes = True    
+        from_attributes = True 
 
+class InstituicaoSchemaS(BaseModel):
+    nome : str
+ 
+
+    class config:
+        from_attributes = True
+
+   
+class CertificadoSaida(BaseModel):
+    nome_aluno: str
+    curso: str
+    hash: str
+    carga_horaria :str
+    data_emissao :str
+    instituicao: InstituicaoSchemaS
+
+    observacoes: Optional[str]
+
+    class Config:
+        from_attributes = True
 

@@ -1,0 +1,41 @@
+from sqlalchemy.orm import Session
+from app.models.modelos import Certificado
+from app.schemas.schema import CertificadoSchema
+from app.utils.gerar_hash import gerar_hash
+from app.models.modelos import Instituicao
+
+def criar_certificado(session: Session, certificado_schema: CertificadoSchema,instituicao:Instituicao):
+    seed = {
+        "nome_aluno":certificado_schema.nome_aluno,
+        "curso":certificado_schema.curso,
+        "carga_horaria":certificado_schema.carga_horaria,
+        "data_emissao":certificado_schema.data_emissao,
+    }
+    codigo =gerar_hash(seed)
+    certificado = Certificado(
+        nome_aluno=certificado_schema.nome_aluno,
+        curso=certificado_schema.curso,
+        carga_horaria=certificado_schema.carga_horaria,
+        data_emissao=certificado_schema.data_emissao,
+        instituicao_id=instituicao,
+        hash = codigo
+    )
+    session.add(certificado)
+    session.commit()
+    session.refresh(certificado)
+    return certificado
+
+def obter_certificado_pelo_hash(session: Session, codigo_hash: str):
+    return session.query(Certificado).filter(Certificado.codigo_hash == codigo_hash).first()
+
+def actualizar_caminho(session: Session, certificado_id: int, pdf_path: str = None, qr_path: str = None):
+    certificado = session.query(Certificado).get(certificado_id)
+    if not certificado:
+        return None
+    if pdf_path:
+        certificado.pdf_url = pdf_path
+    if qr_path:
+        certificado.qr_url = qr_path
+    session.commit()
+    session.refresh(certificado)
+    return certificado
