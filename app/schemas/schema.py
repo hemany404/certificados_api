@@ -18,7 +18,7 @@ class CertificadoSchema(BaseModel):
     curso:str
     carga_horaria:int
     data_emissao: date
-    instituicao_id:int
+   
 
     class config:
         from_attributes = True  
@@ -46,6 +46,7 @@ class CertificadoSaida(BaseModel):
     carga_horaria :int
     data_emissao :date
     instituicao: InstituicaoSchemaS
+    observacao: str = "Certificado Válido ✅"
 
    
 

@@ -7,12 +7,8 @@ import os
 
 directorio(QR_FOLDER)
 
-def gerar_qr(codigo_hash: str, tamanho=290) -> str:
-    """
-    Gera QR que aponta para o endpoint público de verificação:
-    {BASE_URL}/verificar/{codigo_hash}
-    Salva arquivo local e retorna caminho relativo absoluto.
-    """
+def gerar_qr(codigo_hash: str) -> str:
+  
     url = f"{BASE_URL}/verificar/{codigo_hash}"
     qr = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_H)
     qr.add_data(url)
@@ -20,6 +16,6 @@ def gerar_qr(codigo_hash: str, tamanho=290) -> str:
     img = qr.make_image(fill_color="black", back_color="white").convert("RGB")
 
     nome_qr = f"qr_{codigo_hash}.png"
-    path = os.path.join(QR_FOLDER, nome_qr)
-    img.save(path)
-    return path
+    caminho = os.path.join(QR_FOLDER, nome_qr)
+    img.save(caminho)
+    return caminho
