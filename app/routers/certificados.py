@@ -8,7 +8,7 @@ from app.services.storage import local_path_url
 from app.services.gerar_pdf import gerar_pdf_certificado
 from sqlalchemy.orm import session
 from app.utils.gerar_qrcode import gerar_qr
-from app.crud import criar_certificado,actualizar_caminho
+from app.crud import criar_certificado_na_bd,actualizar_caminho
 from app.core.database import pegar_db
 
 certificado_roteador = APIRouter(prefix="/certificados", tags=["certificado"])
@@ -20,13 +20,13 @@ async def emitir_certicado(certificado_schema: CertificadoSchema,session:session
     if not instituicao:
         raise HTTPException(status_code=400,detail="está instituição não existe")
     
-    # 1 - criar registro DB
-    certificado = criar_certificado(session, certificado_schema,instituicao)
+ 
+    certificado = criar_certificado_na_bd(session, certificado_schema,instituicao)
 
-    # 2 - gerar QR localmente
+    # 1 - gerar QR localmente
     qr_path = gerar_qr(certificado.hash)
 
-    # 3 - gerar PDF com o QR embutido
+    # 2 - gerar PDF com o QR embutido
     dados_certificado = {
         "nome_aluno": certificado.nome_aluno,
         "curso": certificado.curso,

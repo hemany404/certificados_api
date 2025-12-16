@@ -43,11 +43,11 @@ class CertificadoSaida(BaseModel):
     nome_aluno: str
     curso: str
     hash: str
-    carga_horaria :str
-    data_emissao :str
+    carga_horaria :int
+    data_emissao :date
     instituicao: InstituicaoSchemaS
 
-    observacoes: Optional[str]
+   
 
     class Config:
         from_attributes = True

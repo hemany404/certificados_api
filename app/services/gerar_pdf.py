@@ -14,7 +14,7 @@ def gerar_pdf_certificado(dados_certificado: dict, qr_path: str) -> str:
     qr_path: caminho do png do QR
     Retorna path do PDF gerado.
     """
-    filename = f"certificado_{dados_certificado['hash']}.pdf"
+    filename = f"certificado_{dados_certificado['nome_aluno']}.pdf"
     out_path = os.path.join(PDF_FOLDER, filename)
 
     c = canvas.Canvas(out_path, pagesize=A4)
