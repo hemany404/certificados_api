@@ -27,7 +27,10 @@ def autenticar_usuario(email,senha,session):
     return instituicao
 
 @auth_roteador.post("/criar_conta")
-async def criar_conta(instituicao_schema: InstituicaoSchema, session: session = Depends(pegar_db)):
+async def criar_conta(
+        instituicao_schema: InstituicaoSchema, 
+        session: session = Depends(pegar_db)):
+    
     instituicao = session.query(Instituicao).filter(Instituicao.email == instituicao_schema.email).first()
 
     if instituicao:
@@ -42,7 +45,10 @@ async def criar_conta(instituicao_schema: InstituicaoSchema, session: session = 
         }
     
 @auth_roteador.post("/login")   
-async def login(login_schema: LoginSchema, session: session = Depends(pegar_db)):
+async def login(
+        login_schema: LoginSchema, 
+        session: session = Depends(pegar_db)):
+    
     Instituicao = autenticar_usuario(login_schema.email,login_schema.senha,session)
     if not Instituicao:
         raise HTTPException(status_code=400,detail="instituição não encontrado ou cadastrado")
@@ -57,7 +63,10 @@ async def login(login_schema: LoginSchema, session: session = Depends(pegar_db))
         }
     
 @auth_roteador.post("/login-form")   
-async def login_form(dados_formulario: OAuth2PasswordRequestForm = Depends(), session: session = Depends(pegar_db)):
+async def login_form(
+        dados_formulario: OAuth2PasswordRequestForm = Depends(),
+        session: session = Depends(pegar_db)):
+    
     instituicao = autenticar_usuario(dados_formulario.username,dados_formulario.password,session)
     if not instituicao:
         raise HTTPException(status_code=400,detail="instituição não encontrado ou cadastrado")
