@@ -1,6 +1,6 @@
 from fastapi import APIRouter,Depends,HTTPException
 from app.dependecias import verificar_usuario
-from app.models.modelos import Instituicao
+from app.models.modelos import Instituicao,Certificado
 from sqlalchemy.orm import session
 from app.core.database import pegar_db
 
@@ -26,3 +26,12 @@ async def deletar_instituicao(
     }
     
 
+@instituicao_roteador.get("/lista_certificados_emitidos")
+async def lista_certificado(
+        session:session=Depends(pegar_db),
+        instituicao:Instituicao = Depends(verificar_usuario)):
+    certificados =session.query(Certificado).filter(Certificado.instituicao_id == instituicao.id).all()
+    return{
+        "numero de certificados emitidos": len(certificados),
+        "certificados": certificados
+    }
