@@ -31,7 +31,30 @@ async def lista_certificado(
         session:session=Depends(pegar_db),
         instituicao:Instituicao = Depends(verificar_usuario)):
     certificados =session.query(Certificado).filter(Certificado.instituicao_id == instituicao.id).all()
+
+    if not certificados:
+        return HTTPException(status_code=400,detail="certificados não encontrado")
+    
     return{
         "numero de certificados emitidos": len(certificados),
         "certificados": certificados
     }
+
+@instituicao_roteador.get("/buscar_certiifcado_curso{curso}")
+async def buscar_certiifcado_curso(
+        curso: str ,
+        session:session = Depends(pegar_db),
+        instituicao: Instituicao = Depends(verificar_usuario)):
+
+    certificados =session.query(Certificado).filter(Certificado.instituicao_id == instituicao.id).all()
+    
+    for certificado in certificados:
+        cont = 0
+        if certificado.curso == curso:
+            cont +=1
+        return{
+            f"número de certificados no curso de {curso}": cont,
+            "certificado": certificado
+            
+        }
+         

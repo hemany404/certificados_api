@@ -35,7 +35,7 @@ def actualizar_caminho(session: Session, certificado_id: int, pdf_caminho: str =
     if pdf_caminho:
         certificado.pdf_url = pdf_caminho
     if qr_caminho:
-        certificado.qr_url = qr_caminho
+        certificado.qrcode_url = qr_caminho
     session.commit()
     session.refresh(certificado)
     return certificado
