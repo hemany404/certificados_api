@@ -35,7 +35,13 @@ def gerar_pdf_certificado(dados_certificado: dict, qr_caminho: str) -> str:
     y -= 10*mm
     c.setFont("Helvetica", 14)
     c.drawCentredString(width/2, y, f"Concluiu o curso: {dados_certificado['curso']}")
-
+    
+    c.setFont("Helvetica", 12)
+    c.drawCentredString(
+        width / 2,
+        height - 125 * mm,
+        f"Carga horária: {dados_certificado['carga_horaria']} horas"
+    )
     
     y -= 12*mm
     c.setFont("Helvetica", 12)
@@ -49,7 +55,7 @@ def gerar_pdf_certificado(dados_certificado: dict, qr_caminho: str) -> str:
         qr_tmp = qr_caminho
         c.drawImage(qr_tmp, width - 60*mm, 30*mm, qr_w, qr_h)
 
-   
+ 
 
     c.showPage()
     c.save()

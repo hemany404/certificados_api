@@ -37,6 +37,7 @@ async def emitir_certicado(
         "carga_horaria": certificado.carga_horaria,
         "data_emissao": certificado.data_emissao,
         "nome da instituicao":certificado.instituicao.nome,
+        "hash": certificado.hash
         
     }
     pdf_caminho = gerar_pdf_certificado(dados_certificado, qr_caminho)
