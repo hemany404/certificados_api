@@ -26,16 +26,16 @@ Este projeto é uma API construída com *FastAPI* que permite a *emissão*, *arm
 
 🧱 Tecnologias Utilizadas
 
-- *Python 3.11+*
-- *FastAPI*
-- *Pydantic*
-- *SQLAlchemy*
-- *SQLite ou PostgreSQL*
-- *Passlib*
-- *JWT Authentication*
-- *QR Code (qrcode lib)*
-- *Reportlab*
-- *Hashlib*
+| Tecnologia | Finalidade        |
+| ---------- | ----------------- |
+| FastAPI    | Framework Backend |
+| SQLAlchemy | ORM               |
+| JWT        | Autenticação      |
+| Sqlite     | Banco de dados    |
+| Alembic    | Migrações         |
+| Pydantic   | Validação         |
+| Reportlab  | Criar PDF         |
+| Hashlib    | Criar Hash         |
 
 ---
 
@@ -78,7 +78,7 @@ certificados_api/
 
 4. Acesse a documentação Swagger:
    ```
-   http://localhost:8000/docs
+   http://127.0.0.1:8000/docs
    ```
 
 ---
