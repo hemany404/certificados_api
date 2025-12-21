@@ -33,23 +33,6 @@ Este projeto é uma API construída com *FastAPI* que permite a *emissão*, *arm
 | Reportlab  |  PDF         |
 | Hashlib    |  Hash        |
 
----
-
-🏗 Estrutura de Pastas
-
-```
-certificados_api/
-├── app/
-│   ├── main.py
-│   ├── models/
-│   ├── schemas/
-│   ├── routers/
-│   ├── core/
-│   ├── services/
-│   └── utils/
-├── requirements.txt
-├── README.md
-```
 
 ---
 
