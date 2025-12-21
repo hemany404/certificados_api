@@ -30,8 +30,8 @@ Este projeto é uma API construída com *FastAPI* que permite a *emissão*, *arm
 | Sqlite     | Banco de dados    |
 | Alembic    | Migrações         |
 | Pydantic   | Validação         |
-| Reportlab  | Criar PDF         |
-| Hashlib    | Criar Hash        |
+| Reportlab  |  PDF         |
+| Hashlib    |  Hash        |
 
 ---
 
