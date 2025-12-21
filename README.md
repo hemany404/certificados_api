@@ -67,7 +67,7 @@ Este projeto é uma API construída com *FastAPI* que permite a *emissão*, *arm
 - *POST /instituicoes/* – Criar instituição
 - *POST /instituicoes/* – Fazer login
 - *POST /certificados/* – Emitir certificado
-- *GET /verificar/{hash}* – Verificar autenticidade
+- *GET /verificar/{hash}* – Verificar autenticidade do certificado 
 - *GET /certificados/* – Listar certificados
 - *GET /certificados/* – Buscar certificados pelo curso
 
