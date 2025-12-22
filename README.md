@@ -1,5 +1,5 @@
 
-Certificados API - Emissão e Verificação de Certificados Digitais
+ Certificados API - Emissão e Verificação de Certificados Digitais
 
 Este projeto é uma API construída com *FastAPI* que permite a *emissão*, *armazenamento*, *verificação pública* e *gerenciamento* de certificados digitais. É ideal para instituições de ensino, cursos online e treinamentos que desejam gerar certificados personalizados, com *QR Code*, segurança e validação confiável.
 
@@ -30,26 +30,9 @@ Este projeto é uma API construída com *FastAPI* que permite a *emissão*, *arm
 | Sqlite     | Banco de dados    |
 | Alembic    | Migrações         |
 | Pydantic   | Validação         |
-| Reportlab  | Criar PDF         |
-| Hashlib    | Criar Hash        |
+| Reportlab  |  PDF         |
+| Hashlib    |  Hash        |
 
----
-
-🏗 Estrutura de Pastas
-
-```
-certificados_api/
-├── app/
-│   ├── main.py
-│   ├── models/
-│   ├── schemas/
-│   ├── routers/
-│   ├── core/
-│   ├── services/
-│   └── utils/
-├── requirements.txt
-├── README.md
-```
 
 ---
 
@@ -84,7 +67,7 @@ certificados_api/
 - *POST /instituicoes/* – Criar instituição
 - *POST /instituicoes/* – Fazer login
 - *POST /certificados/* – Emitir certificado
-- *GET /verificar/{hash}* – Verificar autenticidade
+- *GET /verificar/{hash}* – Verificar autenticidade do certificado 
 - *GET /certificados/* – Listar certificados
 - *GET /certificados/* – Buscar certificados pelo curso
 
