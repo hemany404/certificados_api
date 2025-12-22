@@ -1,9 +1,5 @@
-Claro! Aqui está um exemplo de *README.md* para seu projeto de *emissão e verificação de certificados digitais com FastAPI*:
 
----
-
-```markdown
-📜 Certificados API - Emissão e Verificação de Certificados Digitais
+Certificados API - Emissão e Verificação de Certificados Digitais
 
 Este projeto é uma API construída com *FastAPI* que permite a *emissão*, *armazenamento*, *verificação pública* e *gerenciamento* de certificados digitais. É ideal para instituições de ensino, cursos online e treinamentos que desejam gerar certificados personalizados, com *QR Code*, segurança e validação confiável.
 
@@ -35,7 +31,7 @@ Este projeto é uma API construída com *FastAPI* que permite a *emissão*, *arm
 | Alembic    | Migrações         |
 | Pydantic   | Validação         |
 | Reportlab  | Criar PDF         |
-| Hashlib    | Criar Hash         |
+| Hashlib    | Criar Hash        |
 
 ---
 
