@@ -40,7 +40,7 @@ async def lista_certificado(
         "certificados": certificados
     }
 
-@instituicao_roteador.get("/buscar_certiifcado_curso{curso}")
+@instituicao_roteador.get("/buscar_certiifcado_curso/{curso}")
 async def buscar_certiifcado_curso(
         curso: str ,
         session:session = Depends(pegar_db),
