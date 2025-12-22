@@ -51,7 +51,7 @@ async def login(
     
     Instituicao = autenticar_usuario(login_schema.email,login_schema.senha,session)
     if not Instituicao:
-        raise HTTPException(status_code=400,detail="instituição não encontrado ou cadastrado")
+        raise HTTPException(status_code=404,detail="instituição não encontrado ou cadastrado")
     
     else:
         acess_token = criar_token(Instituicao.id)

@@ -16,7 +16,7 @@ async def deletar_instituicao(
     instituicao = session.query(Instituicao).filter(Instituicao.id == instituicao.id).first()
 
     if not instituicao:
-        raise HTTPException(status_code=400,detail="instituiçao não encontrada")
+        raise HTTPException(status_code=404,detail="instituiçao não encontrada")
     
     session.delete( instituicao)
     session.commit()
@@ -33,7 +33,7 @@ async def lista_certificado(
     certificados =session.query(Certificado).filter(Certificado.instituicao_id == instituicao.id).all()
 
     if not certificados:
-        return HTTPException(status_code=400,detail="certificados não encontrado")
+        return HTTPException(status_code=404,detail="certificados não encontrado")
     
     return{
         "numero de certificados emitidos": len(certificados),
@@ -52,6 +52,8 @@ async def buscar_certiifcado_curso(
         cont = 0
         if certificado.curso == curso:
             cont +=1
+        else:
+            raise HTTPException(status_code=404, detail="certificados não encontrado")    
         return{
             f"número de certificados no curso de {curso}": cont,
             "certificado": certificado
