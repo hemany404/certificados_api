@@ -46,7 +46,7 @@ Este projeto é uma API construída com *FastAPI* que permite a *emissão*, *arm
 2. Crie o ambiente virtual e instale as dependências:
    ```bash
    python -m venv venv
-   venv\Scripts\activate no Windows
+   venv\Scripts\activate #Windows
    pip install -r requirements.txt
    ```
 
