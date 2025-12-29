@@ -8,7 +8,7 @@ Base = declarative_base()
 class Instituicao(Base):
     __tablename__ = "instituicoes"
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True,autoincrement=True)
     nome = Column(String, nullable=False)
     email = Column(String, unique=True)
     senha = Column(String, nullable=False)
