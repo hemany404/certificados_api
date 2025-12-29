@@ -13,5 +13,5 @@ def verificar_usuario(token: str = Depends(oauth2_schema), session: session = De
         raise HTTPException(status_code=401, detail="acesso negado,verifica a data do token")
     instituicao = session.query(Instituicao).filter(Instituicao.id == id_instituicao).first()
     if not instituicao:
-        raise  HTTPException(status_code=401,detail="usuario não encontrado")
+        raise  HTTPException(status_code=404,detail="usuario não encontrado")
     return instituicao
