@@ -22,7 +22,7 @@ async def emitir_certicado(
     instituicao = session.query(Instituicao).filter(Instituicao.id == instituicao.id).first()
 
     if not instituicao:
-        raise HTTPException(status_code=400,detail="está instituição não existe")
+        raise HTTPException(status_code=404,detail="está instituição não existe")
     
  
     certificado = criar_certificado_na_bd(session, certificado_schema,instituicao)
